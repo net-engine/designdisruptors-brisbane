@@ -1,0 +1,44 @@
+// ––––––––––––––––––––––––––––––––––––
+// Article Styles
+// - All elements within an article
+// - Two level nesting
+// ––––––––––––––––––––––––––––––––––––
+
+[data-content="article"] {
+  //
+  // Typography
+  //
+  h1 {
+    @extend .mt0;
+    @extend .mb1;
+    @extend .font-double;
+    @extend .serif;
+    @extend .spaced;
+
+    @media screen and (min-width: $mobile) {
+      font-size: $font-title;
+    }
+  }
+
+  p {
+    @extend .mt0;
+    @extend .mb5;
+    @extend .font-large;
+    @extend .grey-darker;
+
+    @media screen and (min-width: $mobile) {
+      line-height: $line-height-large;
+    }
+  }
+
+  //
+  // Link
+  //
+  a {
+    @extend .underline;
+
+    &:hover {
+      @extend .grey-darker;
+    }
+  }
+}

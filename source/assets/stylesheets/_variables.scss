@@ -1,0 +1,39 @@
+// ––––––––––––––––––––––––––––––––––––
+// Variables
+// ––––––––––––––––––––––––––––––––––––
+
+// Colors
+$grey-darker:             #333333;
+$grey-dark:               #555555;
+$grey:                    #888888;
+$grey-light:              #cccccc;
+$grey-lighter:            #f0f0f0;
+$grey-lightest:           #f9f9f9;
+
+// Font Sizes
+$font-base:               1.5rem; // 15px
+$font-small:              $font-base * 0.875; // 13.125px
+$font-smaller:            $font-base * 0.75;  // 11.25px
+$font-large:              $font-base * 1.25;  // 18.75px
+$font-larger:             $font-base * 1.5;   // 22.5px
+$font-double:             $font-base * 2;     // 30px
+$font-title:              $font-base * 7;     // 105px
+
+$font-triple:             $font-base * 3;     // 45px
+
+// Font Weight
+$font-sans:               "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-cond:               "proxima-nova-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-serif:              Georgia, "Times New Roman", Times, serif;
+$font-mono:               Monaco, Courier, monospace;
+
+// Line Height
+$line-height-base:        1.5;
+$line-height-small:       1.375;
+$line-height-smaller:     1.25;
+$line-height-title:       1;
+$line-height-large:       1.75;
+
+// Breakpoint Size
+$mobile:                  42rem;
+$tablet:                  64rem;
