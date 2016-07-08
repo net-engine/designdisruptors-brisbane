@@ -32,6 +32,9 @@
         visibility: hidden !important;
       }
 
+    / JavaScript
+    = javascript_include_tag :all
+
   %body.min-h-100.flex.flex-column
     = partial "partials/header"
     = yield
@@ -42,8 +45,7 @@
   :javascript
     try{Typekit.load({ async: true });}catch(e){}
 
-  / JavaScript
-  / = javascript_include_tag :all
+
 
   / Google Analytics
   / = partial "partials/analytics"

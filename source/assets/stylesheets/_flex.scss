@@ -42,3 +42,7 @@
 
 .order1 { order: 1; }
 .order2 { order: 2; }
+
+@media screen and (max-width: $mobile) {
+  .xs-flex-column  { flex-direction: column; }
+}

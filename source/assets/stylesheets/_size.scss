@@ -19,7 +19,9 @@
 .w-auto       { width: auto; }
 .w-45         { width: 45%; }
 .w-50         { width: 50%; }
+.w-85         { width: 85%; }
 .w-100        { width: 100%; }
+.w-100vw      { width: 100vw; }
 
 // Max Width
 .max-w-620px  { max-width: 620px; }
@@ -29,7 +31,7 @@
 
 // Responsive Width
 @media screen and (min-width: $mobile) {
+  .sm-w-45    { width: 45%; }
   .sm-w-50    { width: 50%; }
-
   .sm-h-450px { height: 450px; }
 }
