@@ -1,0 +1,24 @@
+%a{ name: "the-team" }
+%section.w-100.bg-grey-darker
+  .max-w-1200px.mx-auto.min-h-100vh.flex.flex-auto.justify-between.py24.fade-in-up
+    %h1.w-45.flex.flex-column.my0.font-title.white.uppercase.right-align.line-height-title.self-start
+      %span The
+      %span Team
+
+    %article.w-45.mt36.mb0.flex.flex-column.semi.line-height-large.spaced-large.uppercase.white.self-start
+      .flex.flex-column.mt0.mb4
+        %h6.my0.semi.font-base.grey-light Time
+        %p.my0.bold.white.font-large 6:00PM
+      .flex.flex-column.mt0.mb4
+        %h6.my0.semi.font-base.grey-light Date
+        %p.my0.bold.white.font-large 28 July 2016 (Thursday)
+      .flex.flex-column.mt0.mb4
+        %h6.my0.semi.font-base.grey-light Location
+        %p.my0.bold.white.font-large
+          GHD Auditorium (Building 49),
+          %br
+          The University of Queensland, Brisbane
+      .flex.flex-wrap.mt0.mb4
+        = link_to "Getting there", "//www.uq.edu.au/maps/directions.html?menu=1", class: "font-small py1 px2 border border-white white hover-white bg-transparent transition-all hover-opacity mr6 mb3"
+        = link_to "Google Maps", "//www.google.com.au/maps/place/Advanced+Engineering+Bldg,+St+Lucia+QLD+4067/@-27.4996257,153.0143914,18.29z/data=!4m5!3m4!1s0x6b915a78ace97cf9:0xd781053270b219b4!8m2!3d-27.4995096!4d153.0152085", class: "font-small py1 px2 border border-white white hover-white bg-transparent transition-all hover-opacity mb3"
+        = link_to "Checkout the auditorium", "//s3.uqcloud.net/eait-precinct/AEB/tour.html", class: "font-small py1 px2 border border-white white hover-white bg-transparent transition-all hover-opacity"

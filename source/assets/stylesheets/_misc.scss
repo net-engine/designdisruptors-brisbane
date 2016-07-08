@@ -30,11 +30,12 @@
 // Border Colors go to colors.scss
 .rounded { border-radius: 3px; }
 
-.border         { border: 1px solid; }
-.border-top     { border-top-width: 1px; border-top-style: solid; }
-.border-left    { border-left-width: 1px; border-left-style: solid; }
-.border-right   { border-right-width: 1px; border-right-style: solid;}
-.border-bottom  { border-bottom-width: 1px; border-bottom-style: solid;}
+.border           { border: 1px solid; }
+.border-top       { border-top-width: 1px; border-top-style: solid; }
+.border-left      { border-left-width: 1px; border-left-style: solid; }
+.border-left-none { border-left: none; }
+.border-right     { border-right-width: 1px; border-right-style: solid;}
+.border-bottom    { border-bottom-width: 1px; border-bottom-style: solid;}
 
 // Text Align
 .center         { text-align: center; }
@@ -57,4 +58,4 @@
 .uppercase { text-transform: uppercase; }
 
 // Transition
-.transition-all { transition: all 0.15s ease-in-out; }
+.transition-all { transition: all 0.2s ease; }

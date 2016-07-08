@@ -2,12 +2,14 @@
 title: Design Disruptors | Brisbane | 28 July 2016
 ---
 
-%main.w-100.h-100.flex.flex-column.flex-auto
+%main.w-100.flex.flex-column.flex-auto
   = partial "partials/sections/fold"
-  .relative.t100vh
+  .absolute.t100vh.w-100
     = partial "partials/sections/about"
-    = partial "partials/sections/film"
-  / = partial "partials/sections/event"
-  / = partial "partials/sections/sponsors"
-  / = partial "partials/sections/team"
-  / = partial "partials/footer"
+    = partial "partials/sections/trailer"
+    = partial "partials/sections/event"
+    = partial "partials/sections/schedule"
+    = partial "partials/sections/tickets-divider"
+    = partial "partials/sections/partners"
+    = partial "partials/sections/team"
+    = partial "partials/footer"
