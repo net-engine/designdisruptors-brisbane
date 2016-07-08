@@ -6,11 +6,12 @@
 // ––––––––––––––––––––––––––––––––––––
 
 // background-size
-.bg-cover { background-size: cover; }
+.bg-cover       { background-size: cover; }
 
 // background-position
-.bg-center { background-position: center; }
-.bg-bottom { background-position: bottom; }
+.bg-center      { background-position: center; }
+.bg-left-center { background-position: left center;}
+.bg-bottom      { background-position: bottom; }
 
 // background-repeat
-.bg-no-repeat { background-repeat: no-repeat; }
+.bg-no-repeat   { background-repeat: no-repeat; }

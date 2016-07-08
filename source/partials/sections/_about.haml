@@ -1,12 +1,18 @@
 %a{ name: "about-the-film" }
-%section.w-100.bg-grey-darker
+%section.relative.w-100.bg-grey-darker
+  .absolute.h-100.min-h-100vh.w-50.flex.flex-wrap
+    .w-50.opacity-min.bg-no-repeat.bg-left-center.bg-cover{ style: "background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-4.jpg')" }
+    .w-50.opacity-min.bg-no-repeat.bg-center.bg-cover{ style: "background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-5.jpg')" }
+    .w-50.opacity-min.bg-no-repeat.bg-center.bg-cover{ style: "background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-2.jpg')" }
+    .w-50.opacity-min.bg-no-repeat.bg-center.bg-cover{ style: "background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-3.jpg')" }
+
   .max-w-1200px.mx-auto.min-h-100vh.flex.flex-auto.justify-between.py24.fade-in-up
     %h1.w-45.flex.flex-column.my0.font-title.white.uppercase.right-align.line-height-title.self-start
       %span About
       %span the film
 
     %article.w-45.mt36.mb0.semi.line-height-large.spaced-large.uppercase.white.self-start
-      %p
+      %p.mb6
         The future of business is being written by companies and products that—intentionally or not— shake billion dollar industries. In Design Disruptors, enter the world of 15+ industry-toppling companies—valued at more than $1 trillion dollars combined—with one unifying secret advantage:
         %br
         %a.bold.grey-lighter.underline.hover-grey{ href: "#watch-the-trailer"} the transformative power of design.
