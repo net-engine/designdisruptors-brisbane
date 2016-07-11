@@ -157,7 +157,7 @@ window.onload = function () {
           }
 
           /* target centre of canvas */
-          var cX = mainCanvas.width * SCALE / 2 + (-200 + Math.random() * 400);
+          var cX = ((mainCanvas.width) / 2) / SCALE + (-200 + Math.random() * 400);
           var cY = canvas.height * SCALE * SPACING * 1.4;
 
           /* distance to centre */
