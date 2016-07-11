@@ -43,7 +43,9 @@ window.onload = () => {
 
     let CLICK = false
 
-    document.getElementById('button').onclick = () => {
+    document.getElementById('button').onclick = (e) => {
+      e.preventDefault()
+
       CLICK = !CLICK
     }
 
@@ -63,8 +65,8 @@ window.onload = () => {
         this.force = Math.random()
 
         const spread = 800
-        this.rx = x + ~~(-(spread / 2) + (spread * Math.random())) /* Math.random() * mainCanvas.width */
-        this.ry = y + ~~(-(spread / 2) + (spread * Math.random())) /* Math.random() * mainCanvas.height */
+        this.rx = x + ~~(-(spread / 2) + (spread * Math.random()))
+        this.ry = y + ~~(-(spread / 2) + (spread * Math.random()))
 
         this.opacity = 0.8
       }
@@ -153,7 +155,7 @@ window.onload = () => {
           b = particle.y - cY
           c = Math.sqrt(a * a + b * b)
 
-          if (c < 200) {
+          if (!CLICK && c < 200) {
             force = GRAVITY * ((particle.radius * 2) * 1000) / Math.pow(c, 2)
 
             force = Math.min(force, 0.3) * particle.force
