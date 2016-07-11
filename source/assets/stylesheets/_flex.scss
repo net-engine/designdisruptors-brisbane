@@ -46,3 +46,7 @@
 @media screen and (max-width: $mobile) {
   .xs-flex-column  { flex-direction: column; }
 }
+
+@media screen and (min-width: $mobile) {
+  .sm-justify-between { justify-content: space-between; }
+}
