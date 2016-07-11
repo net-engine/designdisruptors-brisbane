@@ -9,15 +9,45 @@ window.onload = () => {
         window.setTimeout(callback, 1000 / 60)
       })
 
+    /* mapping canvas */
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+
+    /* drawing canvas */
+    const mainCanvas = document.getElementById('canvas')
+    const mainCtx = mainCanvas.getContext('2d')
+
+    const SCALE = window.innerWidth / 1400
+
     const GRAVITY = 9.8
     const FRICTION = 0.94
-    const START_HUE = ~~(Math.random() * 300)
+    const START_HUE = 360 // ~~(Math.random() * 300)
     const SPACING = 9
 
     const Mouse = {
       x: 0,
       y: 0
     }
+
+    window.onmousemove = e => {
+      const rect = canvas.getBoundingClientRect()
+      Mouse.x = (e.clientX - rect.left) / SCALE
+      Mouse.y = (e.clientY - rect.top) / SCALE - 140
+    }
+
+    let SCROLL = 0
+
+    window.onscroll = (e) => {
+      SCROLL = document.body.scrollTop / 200
+    }
+
+    let CLICK = false
+
+    document.getElementById('button').onclick = () => {
+      CLICK = !CLICK
+    }
+
+    const particles = []
 
     class Particle {
       constructor (x = 0, y = 0) {
@@ -28,31 +58,27 @@ window.onload = () => {
         this.ox = x
         this.oy = y
         this.radius = 4
-        this.size = 0
+        this.size = 0.2
         this.hue = START_HUE + ~~(Math.random() * 60)
         this.force = Math.random()
+
+        const spread = 800
+        this.rx = x + ~~(-(spread / 2) + (spread * Math.random())) /* Math.random() * mainCanvas.width */
+        this.ry = y + ~~(-(spread / 2) + (spread * Math.random())) /* Math.random() * mainCanvas.height */
+
+        this.opacity = 0.8
       }
 
       draw (ctx) {
-        if (this.size > 0.4) {
-          ctx.fillStyle =
-            `hsla(${(this.hue + 180) % 360}, 100%, 66%, ${Math.min(1, 0.3 + (0.1 * this.size))})`
-        } else {
-          ctx.fillStyle =
-            `hsla(${this.hue}, ${100 * this.size}%, 66%, ${Math.min(1, 0.3 + (0.1 * this.size))})`
-        }
+        ctx.fillStyle = this.size > 0.4
+          ? `hsla(${(this.hue + 180) % 360}, 100%, 66%, ${this.opacity})`
+          : `hsla(${this.hue}, ${100 * this.size}%, 66%, ${this.opacity})`
 
         const size = this.radius + -this.size * 10
 
         ctx.fillRect(this.x - size / 2, this.y - size / 2, size, size)
       }
     }
-
-    const particles = []
-
-    /* mapping canvas */
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
 
     let image = new window.Image()
 
@@ -79,31 +105,20 @@ window.onload = () => {
         }
       }
 
-      /* visual canvas */
-      const mainCanvas = document.getElementById('canvas')
-      const mainCtx = mainCanvas.getContext('2d')
-
+      /* fade in canvas */
       mainCanvas.style.opacity = 1
-
-      const scale = window.innerWidth / 1400
-
-      window.onmousemove = e => {
-        const rect = canvas.getBoundingClientRect()
-        Mouse.x = (e.clientX - rect.left) / scale
-        Mouse.y = (e.clientY - rect.top) / scale - 140
-      }
 
       mainCanvas.width = window.innerWidth
       mainCanvas.height = window.innerHeight
 
-      mainCtx.scale(scale, scale)
+      mainCtx.scale(SCALE, SCALE)
 
       ;(function update () {
         /* adjust to scaling and clear canvas */
-        mainCtx.scale(1 / scale, 1 / scale)
+        mainCtx.scale(1 / SCALE, 1 / SCALE)
         mainCtx.fillStyle = 'rgba(255, 255, 255, 0.5)'
         mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height)
-        mainCtx.scale(scale, scale)
+        mainCtx.scale(SCALE, SCALE)
 
         let a, b, c, force
 
@@ -124,27 +139,59 @@ window.onload = () => {
               force = Math.min(force, 1) * particle.force
 
               /* mouse force (towards) */
-              particle.fx -= ((a / c) * force)
-              particle.fy -= ((b / c) * force)
+              particle.fx -= (a / c) * force
+              particle.fy -= (b / c) * force
             }
           }
 
+          /* target centre of canvas */
+          let cX = mainCanvas.width / 2 + (-200 + Math.random() * 400)
+          let cY = canvas.height * SPACING * 1.4
+
+          /* distance to centre */
+          a = particle.x - cX
+          b = particle.y - cY
+          c = Math.sqrt(a * a + b * b)
+
+          if (c < 200) {
+            force = GRAVITY * ((particle.radius * 2) * 1000) / Math.pow(c, 2)
+
+            force = Math.min(force, 0.3) * particle.force
+
+            if (!CLICK) {
+              force *= SCROLL
+            }
+
+            /* centre force (towards) */
+            particle.fx -= (a / c) * force
+            particle.fy -= (b / c) * force
+          }
+
           /* distance to origin */
-          a = particle.x - particle.ox
-          b = particle.y - particle.oy
+          a = particle.x - (CLICK ? particle.rx : particle.ox)
+          b = particle.y - (CLICK ? particle.ry : particle.oy)
           c = Math.sqrt(a * a + b * b)
 
           /* scale size to distance */
           particle.size = Math.min(1, c / 60)
 
-          if (c) {
-            force = c / 200
+          if (CLICK) {
+            let d = particle.x - particle.ox
+            let e = particle.y - particle.oy
+            let f = Math.sqrt(d * d + e * e)
+            particle.opacity = Math.min(1, Math.max(0, 10 / f))
+          } else {
+            particle.opacity = Math.min(1, 0.3 + (0.1 * particle.size))
+          }
 
-            force = Math.min(force, 1.2)
+          if (c) {
+            force = CLICK
+              ? Math.min(c / 600, 0.05)
+              : Math.min(c / 200, 1.2)
 
             /* origin force (towards) */
-            particle.fx -= ((a / c) * force)
-            particle.fy -= ((b / c) * force)
+            particle.fx -= (a / c) * force
+            particle.fy -= (b / c) * force
           }
 
           /* apply force */
