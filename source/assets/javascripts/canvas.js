@@ -32,8 +32,8 @@ window.onload = function () {
 
     window.onmousemove = function (e) {
       var rect = canvas.getBoundingClientRect();
-      Mouse.x = (e.clientX - rect.left) / SCALE;
-      Mouse.y = (e.clientY - rect.top) / SCALE - 140;
+      Mouse.x = ((e.clientX - rect.left)) / SCALE;
+      Mouse.y = ((e.clientY - rect.top)) / SCALE - mainCanvas.offsetTop / SCALE;
     };
 
     var SCROLL = 0;
@@ -157,8 +157,8 @@ window.onload = function () {
           }
 
           /* target centre of canvas */
-          var cX = mainCanvas.width / 2 + (-200 + Math.random() * 400);
-          var cY = canvas.height * SPACING * 1.4;
+          var cX = mainCanvas.width * SCALE / 2 + (-200 + Math.random() * 400);
+          var cY = canvas.height * SCALE * SPACING * 1.4;
 
           /* distance to centre */
           a = particle.x - cX;
