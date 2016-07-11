@@ -29,3 +29,19 @@
 
 // Syntax Highlight
 @import  "syntax-highlighting";
+
+#canvas {
+  margin: 100px;
+  margin-top: 140px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  position: relative;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
