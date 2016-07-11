@@ -116,18 +116,23 @@
 }
 
 @media screen and (min-width: $mobile) {
-  .sm-m0  { margin: 0; }
+  .sm-m0   { margin: 0; }
 
-  .sm-my6 { margin-top: 3rem; margin-bottom: 3rem; }
-  .sm-my9 { margin-top: 4.5rem; margin-bottom: 4.5rem; }
+  .sm-my0  { margin-top: 0; margin-bottom: 0; }
+  .sm-my6  { margin-top: 3rem; margin-bottom: 3rem; }
+  .sm-my9  { margin-top: 4.5rem; margin-bottom: 4.5rem; }
+  .sm-my12 { margin-top: 6rem; margin-bottom: 6rem; }
 
-  .sm-mt0 { margin-top: 0; }
-  .sm-mt3 { margin-top: 1.5rem; }
+  .sm-mt0  { margin-top: 0; }
+  .sm-mt3  { margin-top: 1.5rem; }
+  .sm-mt12 { margin-top: 6rem; }
+  .sm-mt36 { margin-top: 18rem; }
 
-  .sm-mr6 { margin-right: 3rem; }
+  .sm-mr6  { margin-right: 3rem; }
 
-  .sm-mb2 { margin-bottom: 1rem; }
-  .sm-mb6 { margin-bottom: 3rem; }
+  .sm-mb0  { margin-bottom: 0; }
+  .sm-mb2  { margin-bottom: 1rem; }
+  .sm-mb6  { margin-bottom: 3rem; }
 }
 
 @media screen and (min-width: $mobile) and (max-width: $tablet) {

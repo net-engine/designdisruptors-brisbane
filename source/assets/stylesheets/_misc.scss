@@ -22,6 +22,9 @@
 // Opacity
 .opacity-min { opacity: 0.175; }
 
+// Overflow
+.overflow-hidden { overflow: hidden; }
+
 // z-index Properties
 .z1 { z-index: 1; }
 .z2 { z-index: 2; }
@@ -46,6 +49,11 @@
 .left-align     { text-align: left; }
 .right-align    { text-align: right; }
 
+@media screen and (min-width: $mobile) {
+  .sm-center         { text-align: center; }
+  .sm-right-align    { text-align: right; }
+}
+
 // Letter Spacing
 .spaced         { letter-spacing: 1.5px; }
 .spaced-small   { letter-spacing: 0.25px; }
@@ -62,4 +70,9 @@
 .uppercase { text-transform: uppercase; }
 
 // Transition
-.transition-all { transition: all 0.2s ease; }
+.transition-all       { transition: all 0.2s ease; }
+.transition-transform { transition: transform 1s ease; }
+
+// Transform
+.transformY-neg-200per { transform: translateY(-200%); }
+.transformY-0          { transform: translateY(0); }

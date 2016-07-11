@@ -1,12 +1,39 @@
-%header.relative.z2.max-w-1200px.w-100.flex.flex-wrap.justify-between.mt4.sm-my6.mx-auto.px3.sm-px0.fade-in-up
-  %ul.no-list-type.flex.flex-wrap.items-baseline.self-start.m0.pb3.sm-pb0.font-small.semi.spaced.uppercase
-    %li.mr9
-      = link_to "Film", "#about-the-film"
-    %li.mr9
-      = link_to "Event", "#event-details"
-    %li.mr9
-      = link_to "Schedule", "#event-schedule"
-    %li.mr9
-      = link_to "Partners", "#event-partners"
-    / %li
-    /   = link_to "Team", "#the-team"
+%header.relative.z2.max-w-1200px.w-100.flex.flex-wrap.justify-between.mt0.sm-my6.mx-auto.px3.sm-px0.fade-in-up
+  %nav.xs-hide
+    %ul.no-list-type.flex.flex-wrap.items-baseline.self-start.m0.pb3.sm-pb0.px3.font-small.semi.spaced.uppercase
+      %li.mr9
+        = link_to "Film", "#about-the-film"
+      %li.mr9
+        = link_to "Event", "#event-details"
+      %li.mr9
+        = link_to "Schedule", "#event-schedule"
+      %li.mr9
+        = link_to "Partners", "#event-partners"
+      / %li
+      /   = link_to "Team", "#the-team"
+%header
+  %a.md-hide.lg-hide.fixed.z1.t0.r0.p3{ href: "javascript:void(0)", onclick: "showMenu()" }
+    %svg{ height: "10", viewbox: "0 0 20 10", width: "20" }
+      %title Toggle Menu
+      %path{ d: "M1 9h18M1 1h18", fill: "none", stroke: "#000000", "stroke-linecap" => "square" }
+
+  %nav.js-menu.md-hide.lg-hide.fixed.z2.t0.l0.transformY-neg-200per.transition-transform.min-h-100vh.h-100.w-100vw.bg-grey-darker
+    %a.absolute.t0.r0.p3{ href: "javascript:void(0)", onclick: "hideMenu()" }
+      %svg{ height: "15", viewbox: "0 0 14 12"}
+        %title Close Menu
+        %path{ d: "M13 0L1 12m12 0L1 0", fill: "none", stroke: "#ffffff", "stroke-linecap" => "square" }
+    %ul.no-list-type.flex.flex-column.justify-center.my12.font-large.semi.spaced.center.uppercase
+      %li.mb6
+        %a.white{ href: "#about-the-film", onclick: "hideMenu()" } Film
+      %li.mb6
+        %a.white{ href: "#event-details", onclick: "hideMenu()" } Event
+      %li.mb6
+        %a.white{ href: "#event-schedule", onclick: "hideMenu()" } Schedule
+      %li
+        %a.white{ href: "#event-partners", onclick: "hideMenu()" } Partners
+
+    .block.mx-auto.my12.center
+      %a.min-w-260px.inline-block.grey-darker.hover-grey.hover-opacity.transition-all.spaced-large.semi.uppercase.py2.px6.bg-white{ href: "#watch-the-trailer", onclick: "hideMenu()" } Watch the trailer
+
+    .block.mx-auto.my12.center
+      %a.min-w-260px.inline-block.grey-darker.hover-grey.hover-opacity.transition-all.spaced-large.semi.uppercase.py2.px6.bg-white{ href: "#watch-the-trailer", onclick: "hideMenu()" } Get your ticket

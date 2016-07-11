@@ -13,4 +13,9 @@
 
 .l0       { left: 0; }
 .r0       { right: 0; }
-.b6       { bottom: 3rem; }
+.b0       { bottom: 0; }
+
+@media screen and (min-width: $mobile) {
+  .sm-b6       { bottom: 3rem; }
+}
+
