@@ -1,20 +1,29 @@
-function showMenu(e) {
-  document.getElementsByClassName("js-menu")[0].classList.add("transformY-0");
-  document.body.classList.add("overflow-hidden");
+'use strict'
+
+window.showMenu = function (e) {
+  document.getElementsByClassName('js-menu')[0].classList.add('transformY-0')
+  document.body.classList.add('overflow-hidden')
 }
 
-function hideMenu(e) {
-  document.getElementsByClassName("js-menu")[0].classList.remove("transformY-0");
-  document.body.classList.remove("overflow-hidden");
+window.hideMenu = function (e) {
+  document.getElementsByClassName('js-menu')[0].classList.remove('transformY-0')
+  document.body.classList.remove('overflow-hidden')
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('scroll', (function scrolled () {
+  document.getElementById('menu').classList.toggle(
+    'js-scrolled',
+    window.pageYOffset || document.documentElement.scrollTop
+  )
+
+  return scrolled
+})())
+
+window.addEventListener('load', function () {
   function jump (target, duration) {
     var start = window.pageYOffset
 
-    var distance = typeof target === 'string'
-      ? document.querySelector(target).getBoundingClientRect().top
-      : target
+    var distance = typeof target === 'string' ? document.querySelector(target).getBoundingClientRect().top : target
 
     var timeStart
     var timeElapsed
@@ -48,8 +57,8 @@ window.addEventListener('load', () => {
     }
   }
 
-  document.querySelectorAll('.scroll-link a').forEach((link) => {
-    link.onclick = (e) => {
+  document.querySelectorAll('.scroll-link a').forEach(function (link) {
+    link.onclick = function (e) {
       e.preventDefault()
       jump('[name="' + link.href.split('#')[1] + '"]', 1000)
     }
