@@ -23,7 +23,9 @@ window.addEventListener('load', function () {
   function jump (target, duration) {
     var start = window.pageYOffset
 
-    var distance = typeof target === 'string' ? document.querySelector(target).getBoundingClientRect().top : target
+    var distance = typeof target === 'string'
+      ? document.querySelector(target).getBoundingClientRect().top
+      : target
 
     var timeStart
     var timeElapsed
@@ -36,24 +38,23 @@ window.addEventListener('load', function () {
     function loop (time) {
       timeElapsed = time - timeStart
 
-      window.scrollTo(0, easeInOutQuad(timeElapsed, start, distance, duration))
+      window.scrollTo(0, (function easeInOutQuad (timeElapsed, start, distance, duration) {
+        timeElapsed /= duration / 2
+
+        if (timeElapsed < 1) {
+          return distance / 2 * timeElapsed * timeElapsed + start
+        }
+
+        timeElapsed--
+
+        return -distance / 2 * (timeElapsed * (timeElapsed - 2) - 1) + start
+      })(timeElapsed, start, distance, duration))
 
       if (timeElapsed < duration) {
         window.requestAnimationFrame(loop)
-      } else end()
-    }
-
-    function end () {
-      window.scrollTo(0, start + distance)
-    }
-
-    function easeInOutQuad (t, b, c, d) {
-      t /= d / 2
-      if (t < 1) {
-        return c / 2 * t * t + b
+      } else {
+        window.scrollTo(0, start + distance)
       }
-      t--
-      return -c / 2 * (t * (t - 2) - 1) + b
     }
   }
 
