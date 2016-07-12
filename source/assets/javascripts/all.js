@@ -10,16 +10,16 @@ window.hideMenu = function (e) {
   document.body.classList.remove('overflow-hidden')
 }
 
-window.addEventListener('scroll', (function scrolled () {
-  document.getElementById('menu').classList.toggle(
-    'js-scrolled',
-    window.pageYOffset || document.documentElement.scrollTop
-  )
-
-  return scrolled
-})())
-
 window.addEventListener('load', function () {
+  window.addEventListener('scroll', (function scrolled () {
+    document.getElementById('menu').classList.toggle(
+      'js-scrolled',
+      window.pageYOffset || document.documentElement.scrollTop
+    )
+
+    return scrolled
+  })())
+
   function jump (target, duration) {
     var start = window.pageYOffset
 
