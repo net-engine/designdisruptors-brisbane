@@ -30,18 +30,28 @@
 // Syntax Highlight
 @import  "syntax-highlighting";
 
+// Canvas Size
 #canvas {
-  margin: 100px;
-  margin-top: 140px;
-  opacity: 0;
-  transition: opacity 1s ease;
-  max-width: 100%;
+  position: relative;
+  max-width: 1200px;
   max-height: 100%;
   width: auto;
   height: auto;
-  position: relative;
+  margin: 140px auto 0 auto;
+  opacity: 0;
+  transition: opacity 1s ease;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $mobile) {
     display: none;
+  }
+}
+
+// JS Scrolled
+.js-scrolled {
+  @extend .shadow;
+  @extend .bg-white;
+
+  .sm-my6 {
+    @extend .my3;
   }
 }

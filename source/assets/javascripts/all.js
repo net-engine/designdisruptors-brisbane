@@ -17,6 +17,11 @@ window.addEventListener('load', function () {
       window.pageYOffset || document.documentElement.scrollTop
     )
 
+    document.getElementById('js-header-button').classList.toggle(
+      'transformY-0',
+      window.pageYOffset || document.documentElement.scrollTop
+    )
+
     return scrolled
   })())
 
