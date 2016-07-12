@@ -5,6 +5,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 window.onload = function () {
+  /* drawing canvas */
+  var mainCanvas = document.getElementById('canvas');
+  var mainCtx = mainCanvas.getContext('2d');
+
+  mainCanvas.width = window.innerWidth;
+  mainCanvas.height = window.innerHeight;
+
   setTimeout(function () {
     window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
       window.setTimeout(callback, 1000 / 60);
@@ -13,10 +20,6 @@ window.onload = function () {
     /* mapping canvas */
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
-
-    /* drawing canvas */
-    var mainCanvas = document.getElementById('canvas');
-    var mainCtx = mainCanvas.getContext('2d');
 
     var SCALE = window.innerWidth / 1400;
 
@@ -118,9 +121,6 @@ window.onload = function () {
 
       /* fade in canvas */
       mainCanvas.style.opacity = 1;
-
-      mainCanvas.width = window.innerWidth;
-      mainCanvas.height = window.innerHeight;
 
       mainCtx.scale(SCALE, SCALE);(function update() {
         /* adjust to scaling and clear canvas */
