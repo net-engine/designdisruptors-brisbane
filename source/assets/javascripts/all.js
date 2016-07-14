@@ -21,19 +21,18 @@ window.hideMenu = function (e) {
 }
 
 window.addEventListener('load', function () {
-  /* sticky nav bar */
   window.addEventListener('scroll', (function scrolled () {
+    /* element fading */
     var rect = document.querySelector('.video-bg').getBoundingClientRect()
 
     var target = 0
-
     var offset = rect.top - target
-
     var opacity = 100 / Math.abs(offset)
 
     document.querySelector('.video-title').style.opacity = opacity
     document.querySelector('.play-button').style.opacity = opacity * 2
 
+    /* sticky nav bar */
     document.getElementById('menu').classList.toggle(
       'js-scrolled',
       window.pageYOffset || document.documentElement.scrollTop
