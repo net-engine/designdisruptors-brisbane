@@ -1,5 +1,13 @@
 'use strict'
 
+function playVideo () {
+  var video = document.querySelector('iframe.video')
+  video.style.visibility = 'visible'
+  video.style.opacity = 1
+
+  window.$f(video).api('play')
+}
+
 window.showMenu = function (e) {
   document.getElementsByClassName('js-menu')[0].classList.add('transformY-0')
   document.body.classList.add('overflow-hidden')
@@ -24,6 +32,8 @@ window.addEventListener('load', function () {
 
     return scrolled
   })())
+
+  document.querySelector('.play-button').onclick = playVideo
 
   function jump (target, duration) {
     var start = window.pageYOffset
@@ -68,5 +78,14 @@ window.addEventListener('load', function () {
       e.preventDefault()
       jump('[name="' + link.href.split('#')[1] + '"]', 1000)
     }
+  })
+
+  document.getElementById('button').addEventListener('click', function (e) {
+    e.preventDefault()
+
+    setTimeout(function () {
+      jump('[name="watch-the-trailer"]', 1600)
+      playVideo()
+    }, 800)
   })
 }, false)

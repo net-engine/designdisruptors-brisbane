@@ -292,5 +292,50 @@
   .bold { font-weight: 700; }
   .line-height-title { line-height: 1; }
   .line-height-large { line-height: 1.75; }
+  .video-bg {
+    min-height: 100vh;
+    background: url('/assets/images/video-poster.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
+  .play-button {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 68px;
+    height: 68px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: background 0.4s ease;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .play-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 13px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 28px;
+    height: 24px;
+    border-style: solid;
+    border-width: 12px 0 12px 22px;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.08);
+  }
+  .video {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;1
+  }
   #canvas { position: relative; max-width: 1200px; max-height: 100%; width: auto; height: auto; margin: 140px auto 0 auto; opacity: 0; -webkit-transition: opacity 1s ease; transition: opacity 1s ease; }
   @media screen and (max-width: 768px) { #canvas { display: none; } }
