@@ -1,5 +1,15 @@
 'use strict'
 
+function playVideo () {
+  var video = document.querySelector('iframe.video')
+  video.style.visibility = 'visible'
+  video.style.opacity = 1
+
+  setTimeout(function () {
+    window.$f(video).api('play')
+  }, 100)
+}
+
 window.showMenu = function (e) {
   document.getElementsByClassName('js-menu')[0].classList.add('transformY-0')
   document.body.classList.add('overflow-hidden')
@@ -12,6 +22,17 @@ window.hideMenu = function (e) {
 
 window.addEventListener('load', function () {
   window.addEventListener('scroll', (function scrolled () {
+    /* element fading */
+    var rect = document.querySelector('.video-bg').getBoundingClientRect()
+
+    var target = 0
+    var offset = rect.top - target
+    var opacity = 100 / Math.abs(offset)
+
+    document.querySelector('.video-title').style.opacity = opacity
+    document.querySelector('.play-button').style.opacity = opacity * 2
+
+    /* sticky nav bar */
     document.getElementById('menu').classList.toggle(
       'js-scrolled',
       window.pageYOffset || document.documentElement.scrollTop
@@ -25,6 +46,9 @@ window.addEventListener('load', function () {
     return scrolled
   })())
 
+  document.querySelector('.play-button').onclick = playVideo
+
+  /* scroll to element */
   function jump (target, duration) {
     var start = window.pageYOffset
 
@@ -63,10 +87,21 @@ window.addEventListener('load', function () {
     }
   }
 
+  /* nav bar links */
   document.querySelectorAll('.scroll-link a').forEach(function (link) {
     link.onclick = function (e) {
       e.preventDefault()
       jump('[name="' + link.href.split('#')[1] + '"]', 1000)
     }
+  })
+
+  /* watch trailer button */
+  document.getElementById('button').addEventListener('click', function (e) {
+    e.preventDefault()
+
+    setTimeout(function () {
+      jump('[name="watch-the-trailer"]', 1200)
+      playVideo()
+    }, window.innerWidth <= 600 ? 0 : 800)
   })
 }, false)
