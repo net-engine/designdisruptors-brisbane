@@ -5,7 +5,9 @@ function playVideo () {
   video.style.visibility = 'visible'
   video.style.opacity = 1
 
-  window.$f(video).api('play')
+  setTimeout(function () {
+    window.$f(video).api('play')
+  }, 100)
 }
 
 window.showMenu = function (e) {
@@ -19,7 +21,19 @@ window.hideMenu = function (e) {
 }
 
 window.addEventListener('load', function () {
+  /* sticky nav bar */
   window.addEventListener('scroll', (function scrolled () {
+    var rect = document.querySelector('.video-bg').getBoundingClientRect()
+
+    var target = 0
+
+    var offset = rect.top - target
+
+    var opacity = 100 / Math.abs(offset)
+
+    document.querySelector('.video-title').style.opacity = opacity
+    document.querySelector('.play-button').style.opacity = opacity * 1.5
+
     document.getElementById('menu').classList.toggle(
       'js-scrolled',
       window.pageYOffset || document.documentElement.scrollTop
@@ -35,6 +49,7 @@ window.addEventListener('load', function () {
 
   document.querySelector('.play-button').onclick = playVideo
 
+  /* scroll to element */
   function jump (target, duration) {
     var start = window.pageYOffset
 
@@ -73,6 +88,7 @@ window.addEventListener('load', function () {
     }
   }
 
+  /* nav bar links */
   document.querySelectorAll('.scroll-link a').forEach(function (link) {
     link.onclick = function (e) {
       e.preventDefault()
@@ -80,12 +96,13 @@ window.addEventListener('load', function () {
     }
   })
 
+  /* watch trailer button */
   document.getElementById('button').addEventListener('click', function (e) {
     e.preventDefault()
 
     setTimeout(function () {
-      jump('[name="watch-the-trailer"]', 1600)
+      jump('[name="watch-the-trailer"]', 1200)
       playVideo()
-    }, 800)
+    }, window.innerWidth <= 600 ? 0 : 800)
   })
 }, false)
