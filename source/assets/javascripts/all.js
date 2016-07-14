@@ -1,5 +1,6 @@
 'use strict'
 
+/* play vimeo */
 function playVideo () {
   var video = document.querySelector('iframe.video')
   video.style.visibility = 'visible'
@@ -8,6 +9,44 @@ function playVideo () {
   setTimeout(function () {
     window.$f(video).api('play')
   }, 100)
+}
+
+/* scroll to element */
+function jump (target, duration) {
+  var start = window.pageYOffset
+
+  var distance = typeof target === 'string'
+    ? document.querySelector(target).getBoundingClientRect().top
+    : target
+
+  var timeStart
+
+  window.requestAnimationFrame(function (time) {
+    timeStart = time
+    loop(time)
+  })
+
+  function loop (time) {
+    var timeElapsed = time - timeStart
+
+    window.scrollTo(0, (function easeInOutQuad (timeElapsed, start, distance, duration) {
+      timeElapsed /= duration / 2
+
+      if (timeElapsed < 1) {
+        return distance / 2 * timeElapsed * timeElapsed + start
+      }
+
+      timeElapsed--
+
+      return -distance / 2 * (timeElapsed * (timeElapsed - 2) - 1) + start
+    })(timeElapsed, start, distance, duration))
+
+    if (timeElapsed < duration) {
+      window.requestAnimationFrame(loop)
+    } else {
+      window.scrollTo(0, start + distance)
+    }
+  }
 }
 
 window.showMenu = function (e) {
@@ -48,53 +87,6 @@ window.addEventListener('load', function () {
 
   document.querySelector('.play-button').onclick = playVideo
 
-  /* scroll to element */
-  function jump (target, duration) {
-    var start = window.pageYOffset
-
-    var distance = typeof target === 'string'
-      ? document.querySelector(target).getBoundingClientRect().top
-      : target
-
-    var timeStart
-    var timeElapsed
-
-    window.requestAnimationFrame(function (time) {
-      timeStart = time
-      loop(time)
-    })
-
-    function loop (time) {
-      timeElapsed = time - timeStart
-
-      window.scrollTo(0, (function easeInOutQuad (timeElapsed, start, distance, duration) {
-        timeElapsed /= duration / 2
-
-        if (timeElapsed < 1) {
-          return distance / 2 * timeElapsed * timeElapsed + start
-        }
-
-        timeElapsed--
-
-        return -distance / 2 * (timeElapsed * (timeElapsed - 2) - 1) + start
-      })(timeElapsed, start, distance, duration))
-
-      if (timeElapsed < duration) {
-        window.requestAnimationFrame(loop)
-      } else {
-        window.scrollTo(0, start + distance)
-      }
-    }
-  }
-
-  /* nav bar links */
-  document.querySelectorAll('.scroll-link a').forEach(function (link) {
-    link.onclick = function (e) {
-      e.preventDefault()
-      jump('[name="' + link.href.split('#')[1] + '"]', 1000)
-    }
-  })
-
   /* watch trailer button */
   document.getElementById('button').addEventListener('click', function (e) {
     e.preventDefault()
@@ -104,4 +96,14 @@ window.addEventListener('load', function () {
       playVideo()
     }, window.innerWidth <= 600 ? 0 : 800)
   })
+
+  /* nav bar links */
+  var links = document.querySelectorAll('.scroll-link a')
+
+  for (var i = 0; i < links.length; i++) {
+    links[i].onclick = function (e) {
+      e.preventDefault()
+      jump('[name="' + this.href.split('#')[1] + '"]', 1000)
+    }
+  }
 }, false)
