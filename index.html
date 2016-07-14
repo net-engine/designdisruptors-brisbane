@@ -65,7 +65,7 @@
   .block { display: block; }
   .inline-block { display: inline-block; }
   .shadow, .js-scrolled { box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05); }
-  .opacity-min { opacity: 0.175; }
+  .opacity-min { opacity: 0.5; }
   .z1 { z-index: 1; }
   .z2 { z-index: 2; }
   .hover-opacity:hover { opacity: 0.65; }
@@ -138,6 +138,8 @@
   .w-85 { width: 85%; }
   .w-100 { width: 100%; }
   .w-100vw { width: 100vw; }
+  .max-w-150px { max-width: 150px; }
+  .max-w-200px { max-width: 200px; }
   .max-w-400px { max-width: 400px; }
   .max-w-800px { max-width: 800px; }
   .max-w-1200px { max-width: 1200px; }
@@ -344,8 +346,64 @@
   .bold { font-weight: 700; }
   .line-height-title { line-height: 1; }
   .line-height-large { line-height: 1.75; }
+  .video-bg {
+    min-height: 100vh;
+    background: url('assets/images/video-poster.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
+  .play-button {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 68px;
+    height: 68px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: background 0.4s ease;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .play-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 13px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 28px;
+    height: 24px;
+    border-style: solid;
+    border-width: 12px 0 12px 22px;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.08);
+  }
+  .video {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;1
+  }
+  .video-title {
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    position: absolute;
+    top: 34%;
+    left: 0;
+    right: 0;
+    font-size: 54px;
+  }
   #canvas { position: relative; max-width: 1200px; max-height: 100%; width: auto; height: auto; margin: 140px auto 0 auto; opacity: 0; -webkit-transition: opacity 1s ease; transition: opacity 1s ease; }
   @media screen and (max-width: 768px) { #canvas { display: none; } }
+  @media screen and (max-width: 600px) { .video-title { font-size: 30px; } }
 </style>
 
 <!-- = stylesheet_link_tag "site" -->
@@ -373,10 +431,10 @@
 <nav class='xs-hide relative z3 max-w-1200px w-100 flex flex-wrap justify-between mt0 sm-my6 mx-auto px3 sm-px0 fade-in-up transition-all'>
 <ul class='no-list-type flex flex-wrap self-center items-baseline self-start m0 pb3 sm-pb0 px3 font-small semi spaced uppercase'>
 <li class='mr9 scroll-link'>
-<a href="#about-the-film">Film</a>
+<a href="#watch-the-trailer">Trailer</a>
 </li>
 <li class='mr9 scroll-link'>
-<a href="#watch-the-trailer">Trailer</a>
+<a href="#about-the-film">Film</a>
 </li>
 <li class='mr9 scroll-link'>
 <a href="#event-details">Event</a>
@@ -442,7 +500,7 @@ A documentary film
 about design
 </h3>
 <div class='block mx-auto my3 center'>
-<a class='inline-block white hover-white hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-grey-darker' href='#' id='button'>Get your ticket</a>
+<a class='inline-block white hover-white hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-grey-darker' href='#' id='button'>Watch Trailer</a>
 </div>
 </div>
 <div class='absolute l0 r0 b0 sm-b6 flex xs-flex-column justify-between uppercase spaced px3'>
@@ -463,8 +521,18 @@ about design
 <script src="assets/javascripts/canvas.js"></script>
 
 <div class='absolute t100vh w-100'>
+<a name='watch-the-trailer'></a>
+<section class='relative w-100 fade-in-up'>
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<div class='video-bg'>
+<h1 class='video-title'>Watch the trailer</h1>
+<div class='play-button'></div>
+</div>
+<iframe allowfullscreen='' class='video absolute t0 l0 w-100 h-100 min-h-100vh' frameborder='0' mozallowfullscreen='' msallowfullscreen='' oallowfullscreen='' src='//player.vimeo.com/video/167434033' webkitallowfullscreen=''></iframe>
+</section>
+
 <a name='about-the-film'></a>
-<section class='relative w-100 bg-grey-darker fade-in-up'>
+<section class='relative w-100 fade-in-up'>
 <div class='absolute h-100 min-h-100vh w-50 flex flex-wrap xs-hide'>
 <div class='w-50 opacity-min bg-no-repeat bg-left-center bg-cover' style="background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-4.jpg')"></div>
 <div class='w-50 opacity-min bg-no-repeat bg-center bg-cover' style="background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-5.jpg')"></div>
@@ -472,28 +540,19 @@ about design
 <div class='w-50 opacity-min bg-no-repeat bg-center bg-cover' style="background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-3.jpg')"></div>
 </div>
 <div class='max-w-1200px mx-auto min-h-100vh flex flex-auto sm-justify-between fade-in-up flex-wrap xs-flex-column px3 py12 sm-py24'>
-<h1 class='w-100 sm-w-45 flex flex-column my0 font-triple sm-font-title white uppercase left-align sm-right-align line-height-title self-start'>
+<h1 class='w-100 sm-w-45 flex flex-column my0 font-triple sm-font-title grey-darker uppercase left-align sm-right-align line-height-title self-start'>
 <span>About</span>
 <span>the film</span>
 </h1>
-<article class='w-100 sm-w-45 mt6 sm-mt36 mb0 semi line-height-large spaced-large uppercase white self-start'>
+<article class='w-100 sm-w-45 mt6 sm-mt36 mb0 semi line-height-large spaced-large uppercase grey-darker self-start'>
 <p class='mt0 mb6'>
 The future of business is being written by companies and products that—intentionally or not— shake billion dollar industries. In Design Disruptors, enter the world of 15+ industry-toppling companies—valued at more than $1 trillion dollars combined—with one unifying secret advantage:
 <br>
-<a class='bold grey-lighter underline hover-grey' href='#watch-the-trailer'>the transformative power of design.</a>
+<a class='bold grey underline hover-grey' href='#watch-the-trailer'>the transformative power of design.</a>
 </p>
 <p class='my0'>Design Disruptors reveals a never-before-seen perspective on the design approaches of these companies and how they are overtaking billion dollar industries through design.</p>
 </article>
 </div>
-</section>
-
-<a name='watch-the-trailer'></a>
-<section class='max-w-1200px mx-auto min-h-100vh flex flex-column px3 sm-px0 py12 sm-py24'>
-<h1 class='w-100 flex flex-column my0 font-triple sm-font-title left-align sm-center line-height-title self-start grey-darker uppercase'>Latest trailer</h1>
-<article class='relative max-w-800px w-100 mx-auto h-150px sm-h-450px my12'>
-<iframe allowfullscreen='' class='absolute t0 l0 w-100 h-100' frameborder='0' height='450' mozallowfullscreen='' msallowfullscreen='' oallowfullscreen='' src='//player.vimeo.com/video/167434033' webkitallowfullscreen='' width='800'></iframe>
-</article>
-<a href="//www.designdisruptors.com/" class="block my0 center semi uppercase spaced grey-light">More Trailers from designdisruptors.com</a>
 </section>
 
 <a name='event-details'></a>
@@ -682,10 +741,16 @@ Food and beverage
 </div>
 </a>
 <a class='block hover-opacity transition-all' href='//thedesignconference.com.au/'>
-<img class='max-w-400px w-100 block mx-auto mb12' src='assets/images/design-conference-logo.png' width='400'>
+<img class='max-w-400px w-100 block mx-auto mb12' src='assets/images/design-conference-logo.png'>
 </a>
 <a class='block hover-opacity transition-all' href='//creativemornings.com/cities/BNE'>
-<img class='max-w-400px w-100 block mx-auto' src='assets/images/creativemornings-brisbane-logo.png' width='400'>
+<img class='max-w-400px w-100 block mx-auto mb12' src='assets/images/creativemornings-brisbane-logo.png'>
+</a>
+<a class='block hover-opacity transition-all' href='//www.agda.com.au/'>
+<img class='max-w-150px w-100 block mx-auto mb12' src='assets/images/agda-logo.png'>
+</a>
+<a class='block hover-opacity transition-all' href='//www.meetup.com/Product-of-BNE/'>
+<img class='max-w-150px w-100 block mx-auto' src='assets/images/product-bne-logo.png'>
 </a>
 </article>
 </section>
@@ -694,9 +759,14 @@ Food and beverage
 <footer>
 <div class='max-w-1200px w-100 mx-auto px3 flex flex-column fade-in-up'>
 <hr class='w-100 m0 border-top border-grey-light border-left-none'>
-<div class='w-100 flex justify-between items-baseline font-small spaced uppercase semi'>
-<a href="//netengine.com.au" class="mt2 mb4 sm-mb6 xs-p0 md-p0 lg-p0">2016 © NetEngine</a>
-<span>See you there! 🙌</span>
+<div class='w-100 flex flex-wrap justify-between items-baseline font-small spaced uppercase semi'>
+<span class='mt2 mb4 sm-mb6 p0'>
+2016 © Website by
+<a href="//twitter.com/im_felix"> @im_felix</a>
+<span>+</span>
+<a href="//twitter.com/abro_oks"> @abro_oks</a>
+</span>
+<span class='mt0 mb4 sm-mb6 p0'>See you there! 🙌</span>
 </div>
 </div>
 </footer>
