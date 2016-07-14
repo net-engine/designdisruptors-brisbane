@@ -1,6 +1,11 @@
 %footer
   .max-w-1200px.w-100.mx-auto.px3.flex.flex-column.fade-in-up
     %hr.w-100.m0.border-top.border-grey-light.border-left-none
-    .w-100.flex.justify-between.items-baseline.font-small.spaced.uppercase.semi
-      = link_to "#{DateTime.now.year} © NetEngine", "//netengine.com.au", class: "mt2 mb4 sm-mb6 xs-p0 md-p0 lg-p0"
-      %span See you there! 🙌
+    .w-100.flex.flex-wrap.justify-between.items-baseline.font-small.spaced.uppercase.semi
+      %span.mt2.mb4.sm-mb6.p0
+        #{DateTime.now.year} © Website by
+        = link_to " @im_felix", "//twitter.com/im_felix"
+        %span +
+        = link_to " @abro_oks", "//twitter.com/abro_oks"
+
+      %span.mt0.mb4.sm-mb6.p0 See you there! 🙌
