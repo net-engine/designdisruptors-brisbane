@@ -32,7 +32,7 @@ window.addEventListener('load', function () {
     var opacity = 100 / Math.abs(offset)
 
     document.querySelector('.video-title').style.opacity = opacity
-    document.querySelector('.play-button').style.opacity = opacity * 1.5
+    document.querySelector('.play-button').style.opacity = opacity * 2
 
     document.getElementById('menu').classList.toggle(
       'js-scrolled',
