@@ -1,13 +1,9 @@
 %a{ name: "watch-the-trailer" }
 %section.relative.w-100.fade-in-up
-  / %h1.w-100.flex.flex-column.my0.font-triple.sm-font-title.left-align.sm-center.line-height-title.self-start.grey-darker.uppercase Latest trailer
-  / %article.relative.max-w-800px.w-100.mx-auto.h-150px.sm-h-450px.my12
-
   = javascript_include_tag 'http://a.vimeocdn.com/js/froogaloop2.min.js'
 
   .video-bg
+    %h1.video-title Watch the trailer
     .play-button
 
   %iframe.video.absolute.t0.l0.w-100.h-100.min-h-100vh{ src: "//player.vimeo.com/video/167434033", frameborder:"0", webkitallowfullscreen: "", mozallowfullscreen: "", allowfullscreen: "", msallowfullscreen: "", oallowfullscreen: "" }
-
-  -# = link_to "More Trailers from designdisruptors.com", "//www.designdisruptors.com/", class: "block my0 center semi uppercase spaced grey-light"
