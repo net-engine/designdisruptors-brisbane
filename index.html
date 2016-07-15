@@ -90,7 +90,7 @@
   .border-grey { border-color: #888888; }
   .border-grey-light { border-color: #cccccc; }
   .white { color: #ffffff; }
-  .grey-darker, a:hover, a:focus, a:hover { color: #212121; }
+  .grey-darker, a:hover, a:hover, a.active { color: #212121; }
   .grey-dark { color: #555555; }
   .grey, a { color: #888888; }
   .grey-light { color: #cccccc; }
@@ -349,7 +349,7 @@
   .video-bg {
     min-height: 100vh;
     background: url('assets/images/video-poster.jpg');
-    background-size: auto 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -401,6 +401,9 @@
     right: 0;
     font-size: 54px;
   }
+  .scroll-link > a {
+    transition: color 0.4s ease;
+  }
   #canvas { position: relative; max-width: 1200px; max-height: 100%; width: auto; height: auto; margin: 140px auto 0 auto; opacity: 0; -webkit-transition: opacity 1s ease; transition: opacity 1s ease; }
   @media screen and (max-width: 768px) { #canvas { display: none; } }
   @media screen and (max-width: 600px) { .video-title { font-size: 30px; } }
@@ -446,7 +449,7 @@
 <a href="#event-partners">Partners</a>
 </li>
 </ul>
-<a class='inline-block white hover-white hover-opacity transformY-neg-200per transition-all font-small spaced-large semi uppercase py2 px6 bg-grey-darker' href='#' id='js-header-button'>Get your ticket</a>
+<a class='inline-block white hover-white hover-opacity transformY-neg-200per transition-all font-small spaced-large semi uppercase py2 px6 bg-grey-darker' href='https://www.eventbrite.com.au/e/design-disruptors-tickets-26600187878' id='js-header-button'>Get your ticket</a>
 </nav>
 </header>
 <header>
@@ -481,7 +484,7 @@
 <a class='min-w-260px inline-block grey-darker hover-grey hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-white' href='#watch-the-trailer' onclick='hideMenu()'>Watch the trailer</a>
 </div>
 <div class='block mx-auto my12 center'>
-<a class='min-w-260px inline-block grey-darker hover-grey hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-white' href='#watch-the-trailer' onclick='hideMenu()'>Get your ticket</a>
+<a class='min-w-260px inline-block grey-darker hover-grey hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-white' href='https://www.eventbrite.com.au/e/design-disruptors-tickets-26600187878' onclick='hideMenu()'>Get your ticket</a>
 </div>
 </nav>
 </header>
@@ -495,9 +498,7 @@
 </svg>
 
 <h3 class='block my6 center semi spaced-large uppercase font-small sm-font-base'>
-Our future
-<br class='md-hide lg-hide'>
-is designed
+Our future is designed
 </h3>
 <div class='block mx-auto my3 center'>
 <a class='inline-block white hover-white hover-opacity transition-all spaced-large semi uppercase py2 px6 bg-grey-darker' href='#' id='button'>Watch The Trailer</a>
@@ -522,7 +523,7 @@ is designed
 
 <div class='absolute t100vh w-100'>
 <a name='watch-the-trailer'></a>
-<section class='relative w-100 fade-in-up'>
+<section class='relative w-100 fade-in-up section'>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <div class='video-bg'>
 <h1 class='video-title'>Watch the trailer</h1>
@@ -532,7 +533,7 @@ is designed
 </section>
 
 <a name='about-the-film'></a>
-<section class='relative w-100 fade-in-up'>
+<section class='relative w-100 fade-in-up section'>
 <div class='absolute h-100 min-h-100vh w-50 flex flex-wrap xs-hide'>
 <div class='w-50 opacity-min bg-no-repeat bg-left-center bg-cover' style="background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-4.jpg')"></div>
 <div class='w-50 opacity-min bg-no-repeat bg-center bg-cover' style="background-image: url('https://www.invisionapp.com/subsystems/design_disruptors_new/assets/img/video-poster-5.jpg')"></div>
@@ -562,7 +563,7 @@ The future of business is being written by companies and products that—intenti
 <div class='w-100 opacity-min bg-no-repeat bg-center bg-cover' style="background-image: url('assets/images/advanced-engineering-building-2.png')"></div>
 </div>
 </section>
-<section class='w-100 bg-grey-darker'>
+<section class='w-100 bg-grey-darker section'>
 <div class='max-w-1200px mx-auto min-h-100vh flex flex-auto sm-justify-between xs-flex-column px3 py12 sm-py24 fade-in-up'>
 <h1 class='w-100 sm-w-45 flex flex-column my0 font-triple sm-font-title white uppercase left-align sm-right-align line-height-title self-start'>
 <span>Event</span>
@@ -597,7 +598,7 @@ The University of Queensland, Brisbane
 </section>
 
 <a name='event-schedule'></a>
-<section class='w-100'>
+<section class='w-100 section'>
 <div class='max-w-1200px mx-auto min-h-100vh flex flex-auto sm-justify-between xs-flex-column px3 py12 sm-py24 fade-in-up'>
 <h1 class='w-100 sm-w-45 flex flex-column my0 font-triple sm-font-title grey-darker uppercase left-align sm-right-align line-height-title self-start'>
 <span>Event</span>
@@ -630,13 +631,13 @@ Drinks and Canapes
 <div class='max-w-1200px mx-auto flex justify-center px3 py18 fade-in-up'>
 <div class='block mx-auto center'>
 <p class='mb4 white uppercase semi spaced'>Bring along a friend — learn what design means</p>
-<a class='inline-block grey-darker hover-grey-dark hover-opacity transition-all spaced-large semi uppercase m0 py2 px6 bg-white' href='#'>Free tickets</a>
+<a class='inline-block grey-darker hover-grey-dark hover-opacity transition-all spaced-large semi uppercase m0 py2 px6 bg-white' href='https://www.eventbrite.com.au/e/design-disruptors-tickets-26600187878'>Free tickets</a>
 </div>
 </div>
 </section>
 
 <a name='event-partners'></a>
-<section class='max-w-1200px mx-auto min-h-100vh flex flex-column px3 sm-px0 py12 sm-py24 fade-in-up'>
+<section class='max-w-1200px mx-auto min-h-100vh flex flex-column px3 sm-px0 py12 sm-py24 fade-in-up section'>
 <h1 class='w-100 my0 font-triple sm-font-title grey-darker uppercase left-align sm-center line-height-title self-start'>Partners</h1>
 <h4 class='w-100 mt3 mb0 font-base sm-font-large grey-dark uppercase left-align sm-center'>Thanks to all the partners for bringing this event together</h4>
 <article class='relative max-w-800px w-100 h-auto mx-auto mt6 sm-mt12'>
