@@ -60,6 +60,8 @@ window.hideMenu = function (e) {
 }
 
 window.addEventListener('load', function () {
+  var links = document.querySelectorAll('.scroll-link a')
+
   window.addEventListener('scroll', (function scrolled () {
     /* element fading */
     var rect = document.querySelector('.video-bg').getBoundingClientRect()
@@ -82,6 +84,18 @@ window.addEventListener('load', function () {
       window.pageYOffset || document.documentElement.scrollTop
     )
 
+    /* update active link */
+    for (var i = 0; i < links.length; i++) {
+      var id = links[i].href.split('#')[1]
+      var section = document.querySelector('[name="' + id + '"] ~ .section')
+      var top = section.getBoundingClientRect().top
+      var height = section.getBoundingClientRect().height
+
+      var active = top < 100 && top > -height + 100
+
+      links[i].classList.toggle('active', active)
+    }
+
     return scrolled
   })())
 
@@ -98,8 +112,6 @@ window.addEventListener('load', function () {
   })
 
   /* nav bar links */
-  var links = document.querySelectorAll('.scroll-link a')
-
   for (var i = 0; i < links.length; i++) {
     links[i].onclick = function (e) {
       e.preventDefault()

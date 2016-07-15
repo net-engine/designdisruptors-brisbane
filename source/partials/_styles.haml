@@ -38,7 +38,7 @@
   .border-grey { border-color: #888888; }
   .border-grey-light { border-color: #cccccc; }
   .white { color: #ffffff; }
-  .grey-darker, a:hover, a:focus, a:hover { color: #212121; }
+  .grey-darker, a:hover, a:hover, a.active { color: #212121; }
   .grey-dark { color: #555555; }
   .grey, a { color: #888888; }
   .grey-light { color: #cccccc; }
@@ -297,7 +297,7 @@
   .video-bg {
     min-height: 100vh;
     background: url('/assets/images/video-poster.jpg');
-    background-size: auto 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -348,6 +348,9 @@
     left: 0;
     right: 0;
     font-size: 54px;
+  }
+  .scroll-link > a {
+    transition: color 0.4s ease;
   }
   #canvas { position: relative; max-width: 1200px; max-height: 100%; width: auto; height: auto; margin: 140px auto 0 auto; opacity: 0; -webkit-transition: opacity 1s ease; transition: opacity 1s ease; }
   @media screen and (max-width: 768px) { #canvas { display: none; } }
