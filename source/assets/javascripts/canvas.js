@@ -252,7 +252,7 @@ window.onload = function () {
           particle.draw(mainCtx)
         })
 
-        window.requestAnimFrame(update)
+        window.innerWidth > 600 && window.requestAnimFrame(update)
       })()
     }
 
