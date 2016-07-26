@@ -36,6 +36,7 @@
 
 // Responsive Width
 @media screen and (min-width: $mobile) {
+  .sm-w-33    { width: 33%; }
   .sm-w-45    { width: 45%; }
   .sm-w-50    { width: 50%; }
   .sm-h-450px { height: 450px; }

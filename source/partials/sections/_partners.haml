@@ -2,20 +2,25 @@
 %section.max-w-1200px.mx-auto.min-h-100vh.flex.flex-column.px3.sm-px0.py12.sm-py24.fade-in-up.section
   %h1.w-100.my0.font-triple.sm-font-title.grey-darker.uppercase.left-align.sm-center.line-height-title.self-start Partners
   %h4.w-100.mt3.mb0.font-base.sm-font-large.grey-dark.uppercase.left-align.sm-center Thanks to all the partners for bringing this event together
-  %article.relative.max-w-800px.w-100.h-auto.mx-auto.mt6.sm-mt12
-    %a.block.hover-opacity.transition-all{ href: "//www.uq.edu.au/" }
-      .mb12.center= partial "partials/svg/university-of-queensland-logo"
-    %a.block.hover-opacity.transition-all{ href: "//outfit.io/" }
-      .mb12.center= partial "partials/svg/outfit-logo"
-    %a.block.hover-opacity.transition-all{ href: "//netengine.com.au/" }
-      .mb12.center= partial "partials/svg/netengine-logo"
-    %a.block.hover-opacity.transition-all{ href: "//thedesignconference.com.au/" }
-      %img.max-w-400px.w-100.block.mx-auto.mb12{ src: "assets/images/design-conference-logo.png" }
-    %a.block.hover-opacity.transition-all{ href: "//creativemornings.com/cities/BNE" }
-      %img.max-w-400px.w-100.block.mx-auto.mb12{ src: "assets/images/creativemornings-brisbane-logo.png" }
-    %a.block.hover-opacity.transition-all{ href: "//www.agda.com.au/" }
-      %img.max-w-150px.w-100.block.mx-auto{ src: "assets/images/agda-logo.png" }
-    %a.block.hover-opacity.transition-all{ href: "//josephmark.com.au/" }
-      .center= partial "partials/svg/josephmark-logo"
-    %a.block.hover-opacity.transition-all{ href: "//www.meetup.com/Product-of-BNE/" }
-      %img.max-w-150px.w-100.block.mx-auto{ src: "assets/images/product-bne-logo.png" }
+  %article.relative.max-w-800px.w-100.h-auto.flex.flex-wrap.justify-center.mx-auto.mt6.sm-mt12
+    .mb0.sm-mb12.w-100.h-auto.flex.flex-wrap.justify-center
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//www.uq.edu.au/" }
+        = partial "partials/svg/university-of-queensland-logo"
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//outfit.io/" }
+        = partial "partials/svg/outfit-logo"
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//netengine.com.au/" }
+        = partial "partials/svg/netengine-logo"
+    .mb0.sm-mb6.w-100.h-auto.flex.flex-wrap.justify-center
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//thedesignconference.com.au/" }
+        %img.max-w-400px.w-100.block.mx-auto{ src: "assets/images/design-conference-logo.png" }
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//creativemornings.com/cities/BNE" }
+        %img.max-w-400px.w-100.block.mx-auto{ src: "assets/images/creativemornings-brisbane-logo.png" }
+      %a.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//www.agda.com.au/" }
+        %img.max-w-150px.w-100.block.mx-auto{ src: "assets/images/agda-logo.png" }
+    .mb0.w-100.h-auto.flex.flex-wrap.justify-center
+      %a.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//josephmark.com.au/" }
+        .center= partial "partials/svg/josephmark-logo"
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//www.meetup.com/Product-of-BNE/" }
+        %img.max-w-100px.w-100.block.mx-auto{ src: "assets/images/product-bne-logo.png" }
+      %a.mb12.sm-mb0.w-100.sm-w-33.block.px8.self-center.hover-opacity.transition-all{ href: "//www.meetup.com/UXBrisbane/" }
+        %img.max-w-100px.w-100.block.mx-auto{ src: "assets/images/uxbne.png" }
